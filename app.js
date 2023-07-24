@@ -5,9 +5,9 @@ async function fetchProducts() {
   try {
     const response = await fetch("https://dummyjson.com/products")
       .then((res) => res.json())
-      .then("res",console.log);
-      const firstTenProducts = response.products.slice(0, 10);
-      firstTenProducts.forEach((product) => {
+      .then("res", console.log);
+    const firstTenProducts = response.products.slice(0, 15);
+    firstTenProducts.forEach((product) => {
       const li = document.createElement("li");
       li.innerText = product.brand;
       li.draggable = true;
@@ -17,7 +17,6 @@ async function fetchProducts() {
     });
   } catch (error) {
     console.error("Hata oluştu:", error);
-
   }
 }
 let draggedItem = null;
@@ -44,4 +43,3 @@ dragArea.addEventListener("drop", (e) => {
 });
 
 fetchProducts();
-
