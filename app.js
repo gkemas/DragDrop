@@ -6,7 +6,8 @@ async function fetchProducts() {
     const response = await fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then("res",console.log);
-    response.products.forEach((product) => {
+      const firstTenProducts = response.products.slice(0, 10);
+      firstTenProducts.forEach((product) => {
       const li = document.createElement("li");
       li.innerText = product.brand;
       li.draggable = true;
@@ -43,4 +44,4 @@ dragArea.addEventListener("drop", (e) => {
 });
 
 fetchProducts();
-window.addEventListener("resize", fetchProducts);
+
